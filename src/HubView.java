@@ -10,6 +10,16 @@ public class HubView extends JFrame {
 
     private JTabbedPane tabbedPane;
 
+    // JTextAreas pour chaque onglet
+    private JTextArea htmlTextArea;
+    private JTextArea cssTextArea;
+    private JTextArea javaTextArea;
+
+    // Boutons copier
+    private JButton htmlCopyButton;
+    private JButton cssCopyButton;
+    private JButton javaCopyButton;
+
     public HubView() {
         setTitle("Hub de Snippets");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,16 +31,40 @@ public class HubView extends JFrame {
         htmlButton = new JButton("HTML");
         cssButton = new JButton("CSS");
         javaButton = new JButton("Java");
-
         topPanel.add(htmlButton);
         topPanel.add(cssButton);
         topPanel.add(javaButton);
 
         // ---- Onglets ----
         tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("HTML", new JScrollPane(new JTextArea("Snippet HTML ici...")));
-        tabbedPane.addTab("CSS", new JScrollPane(new JTextArea("Snippet CSS ici...")));
-        tabbedPane.addTab("Java", new JScrollPane(new JTextArea("Snippet Java ici...")));
+
+        // HTML
+        htmlTextArea = new JTextArea();
+        htmlTextArea.setEditable(true);
+        htmlCopyButton = new JButton("Copier");
+        JPanel htmlPanel = new JPanel(new BorderLayout());
+        htmlPanel.add(new JScrollPane(htmlTextArea), BorderLayout.CENTER);
+        htmlPanel.add(htmlCopyButton, BorderLayout.SOUTH);
+
+        // CSS
+        cssTextArea = new JTextArea();
+        cssTextArea.setEditable(true);
+        cssCopyButton = new JButton("Copier");
+        JPanel cssPanel = new JPanel(new BorderLayout());
+        cssPanel.add(new JScrollPane(cssTextArea), BorderLayout.CENTER);
+        cssPanel.add(cssCopyButton, BorderLayout.SOUTH);
+
+        // Java
+        javaTextArea = new JTextArea();
+        javaTextArea.setEditable(true);
+        javaCopyButton = new JButton("Copier");
+        JPanel javaPanel = new JPanel(new BorderLayout());
+        javaPanel.add(new JScrollPane(javaTextArea), BorderLayout.CENTER);
+        javaPanel.add(javaCopyButton, BorderLayout.SOUTH);
+
+        tabbedPane.addTab("HTML", htmlPanel);
+        tabbedPane.addTab("CSS", cssPanel);
+        tabbedPane.addTab("Java", javaPanel);
 
         // ---- Layout ----
         setLayout(new BorderLayout());
@@ -38,10 +72,18 @@ public class HubView extends JFrame {
         add(tabbedPane, BorderLayout.CENTER);
     }
 
-    // Getters
+    // Getters pour les boutons
     public JButton getHtmlButton() { return htmlButton; }
     public JButton getCssButton() { return cssButton; }
     public JButton getJavaButton() { return javaButton; }
+
+    public JTextArea getHtmlTextArea() { return htmlTextArea; }
+    public JTextArea getCssTextArea() { return cssTextArea; }
+    public JTextArea getJavaTextArea() { return javaTextArea; }
+
+    public JButton getHtmlCopyButton() { return htmlCopyButton; }
+    public JButton getCssCopyButton() { return cssCopyButton; }
+    public JButton getJavaCopyButton() { return javaCopyButton; }
 
     public JTabbedPane getTabbedPane() { return tabbedPane; }
 }
