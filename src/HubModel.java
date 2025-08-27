@@ -4,167 +4,212 @@ public class HubModel {
 
     public String getHtmlSnippet() {
         return """
-            <!DOCTYPE html>
-            <html lang="fr">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Mon Site Exemple</title>
-                <link rel="stylesheet" href="style.css">
-            </head>
-            <body>
-                <!-- Navigation -->
-                <header>
-                    <nav>
-                        <ul>
-                            <li><a href="#accueil">Accueil</a></li>
-                            <li><a href="#services">Services</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </nav>
-                </header>
-
-                <!-- Section Accueil -->
-                <section id="accueil">
-                    <h1>Bienvenue sur mon site</h1>
-                    <p>Ceci est une page de base pour démarrer rapidement un projet.</p>
-                </section>
-
-                <!-- Section Services -->
-                <section id="services">
-                    <h2>Nos Services</h2>
-                    <h3>Développement</h3>
-                    <p>Création d’applications web et mobiles.</p>
-                    <h3>Design</h3>
-                    <p>UI/UX moderne et accessible.</p>
-                </section>
-
-                <!-- Section Contact -->
-                <section id="contact">
-                    <h2>Contact</h2>
-                    <form>
-                        <label for="name">Nom :</label>
-                        <input type="text" id="name" name="name" required>
-
-                        <label for="email">Email :</label>
-                        <input type="email" id="email" name="email" required>
-
-                        <button type="submit">Envoyer</button>
-                    </form>
-                </section>
-
-                <!-- Footer -->
-                <footer>
-                    <p>&copy; 2025 - Mon Site Exemple</p>
-                </footer>
-            </body>
-            </html>
+                <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                            <meta charset="utf-8"/>
+                            <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+                            <title>R&amp;T Department - IUT Béziers</title>
+                            <link href="snippet.css" rel="stylesheet"/>
+                            </head>
+                            <body>
+                            <header>
+                            <div class="top-bar">
+                            <div>
+                            <span><i class="fas fa-phone"></i> 04 67 11 60 00</span>
+                            <span><i class="fas fa-envelope"></i> rt.beziers@iut.fr</span>
+                            <span><i class="fas fa-map-marker-alt"></i> 3 place du 14 Juillet, 34500 Béziers</span>
+                            </div>
+                            <div class="social-icons">
+                            <i class="fas fa-book"></i>
+                            <i class="fas fa-search"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-linkedin"></i>
+                            <i class="fab fa-facebook"></i>
+                            <i class="fab fa-instagram"></i>
+                            </div>
+                            </div>
+                            <div class="second-bar">
+                            <img alt="Logo IUT Béziers" class="logo" src="C:\\Users\\telio\\Downloads\\RT_Promotion_AllStyled\\R&T Department Promotion\\images\\logo-iut.png"/>
+                            <nav class="main-nav">
+                            <ul>
+                            <li><a href="index.html">Formation</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="forum.html">Forum</a></li>
+                            </ul>
+                            </nav>
+                            </div>
+                            </header>
+                            <main>
+                            <section id="formation">
+                            <h1>Discover the BUT RT</h1>
+                            <section class="highlight-box">
+                            <section class="highlight-box"><p>A 3-year hands-on degree in cybersecurity, cloud, and telecom systems. Start building networks and securing data now!</p></section>
+                            </section>
+                            <h2>🎓 What is the BUT RT?</h2>
+                            <section class="highlight-box"><p>The BUT 'Réseaux &amp; Télécommunications' is a 3-year program focused on digital systems, networks, and cybersecurity. It blends theory and hands-on practice. Perfect for tech enthusiasts after high school or during reorientation.</p></section>
+                            <h3>🎥 A Day in the Life</h3>
+                            <section class="highlight-box"><p>Watch a humorous video created to promote the BUT RT, it describes the entire training in just under 3 minutes.
+                                <iframe width="500" height="300" src="https://www.youtube.com/embed/jE5VrJKhZC8?si=arMvBkQTAYvu0OII" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </p></section>
+                            <h4>📚 Two Specializations</h4>
+                            <ul>
+                            <li>Network Infrastructure and System Administration</li>
+                            <li>Cybersecurity and Communication Systems</li>
+                            </ul>
+                            <h2>🛠️ Skills You Will Learn</h2>
+                            <section class="highlight-box"><p>You'll learn to manage networks, configure secure systems, create communication infrastructures, and more — all through practical labs and real-world projects.</p></section>
+                            <h2>💼 Career Opportunities</h2>
+                            <section class="highlight-box"><p>Career paths include network administrator, IT security specialist, telecom engineer. Continue with engineering schools, licenses, or enter the job market directly.</p></section>
+                            <h3>💬 Student Testimonials</h3>
+                            <section class="highlight-box"><p>“I chose BUT RT because I love technology and solving real problems.” – Clara, 2nd year</p></section>
+                            <section class="highlight-box"><p>“My internship in a cybersecurity startup taught me a lot!” – Nathan, 3rd year</p></section>
+                            <h3>🌍 International &amp; Projects</h3>
+                            <section class="highlight-box"><p>Opportunities for internships abroad and international programs. Final-year students carry out impactful real-world projects.</p></section>
+                            </section>
+                            </main>
+                            </body>
+                            </html>
+                
             """;
     }
 
     public String getCssSnippet() {
         return """
-            /* Reset rapide */
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            body {
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                background-color: #f4f4f9;
-                color: #333;
-            }
-
-            /* Navigation */
-            nav {
-                background: #333;
-                padding: 10px 0;
-            }
-            nav ul {
-                display: flex;
-                justify-content: center;
-                list-style: none;
-            }
-            nav ul li {
-                margin: 0 15px;
-            }
-            nav ul li a {
-                color: white;
-                text-decoration: none;
-                font-weight: bold;
-            }
-            nav ul li a:hover {
-                color: #ff9800;
-            }
-
-            /* Titres */
-            h1 {
-                font-size: 2.5em;
-                margin: 20px 0;
-                text-align: center;
-                color: #222;
-            }
-            h2 {
-                font-size: 2em;
-                margin: 15px 0;
-                color: #444;
-            }
-            h3, h4 {
-                font-size: 1.5em;
-                margin: 10px 0;
-                color: #555;
-            }
-
-            /* Sections */
-            section {
-                padding: 40px 20px;
-                max-width: 900px;
-                margin: auto;
-            }
-
-            /* Formulaire */
-            form {
-                display: flex;
-                flex-direction: column;
-                max-width: 400px;
-                margin: auto;
-            }
-            input, button {
-                padding: 10px;
-                margin: 10px 0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-            button {
-                background: #333;
-                color: white;
-                cursor: pointer;
-            }
-            button:hover {
-                background: #555;
-            }
-
-            /* Footer */
-            footer {
-                text-align: center;
-                padding: 20px;
-                background: #333;
-                color: white;
-                margin-top: 40px;
-            }
-
-            /* Responsive */
-            @media (max-width: 600px) {
-                nav ul {
-                    flex-direction: column;
-                }
-                h1 {
-                    font-size: 2em;
-                }
-            }
+                
+                      body {
+                          margin: 0;
+                          font-family: Arial, sans-serif;
+                          line-height: 1.6;
+                      }
+                
+                      header .top-bar{
+                          background-color: #141547;
+                          color: white;
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          padding: 8px 20px;
+                
+                      }
+                      header .second-bar {
+                          background-color: #141547;
+                          color: white;
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          padding: 8px 20px;
+                      }
+                
+                      header .second-bar nav {
+                          color: white;
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          padding: 8px 20px;
+                      }
+                
+                      header .top-bar span {
+                          margin-right: 20px;
+                          font-size: 0.9rem;
+                      }
+                
+                      header .social-icons i {
+                          margin-left: 12px;
+                          cursor: pointer;
+                      }
+                
+                      header .second-bar {
+                          background-color: #fff;
+                          color: #141547;
+                          border-bottom: 1px solid #ddd;
+                          position: sticky;
+                          top: 45px;
+                
+                      }
+                
+                      header .second-bar .logo {
+                          height: 50px;
+                      }
+                
+                      header .main-nav ul {
+                          list-style: none;
+                          display: flex;
+                          margin: 0;
+                          padding: 0;
+                      }
+                
+                      header .main-nav ul li {
+                          margin-left: 20px;
+                      }
+                
+                      header .main-nav ul li a {
+                          text-decoration: none;
+                          color: #141547;
+                          font-weight: 600;
+                          font-size: 1rem;
+                      }
+                
+                      header .top-bar {
+                          position: sticky;
+                          top: 0;
+                          z-index: 1001;
+                      }
+                
+                      main {
+                          padding: 40px 20px;
+                          max-width: 1000px;
+                          margin: auto;
+                      }
+                
+                      h1 {
+                          font-size: 1.8rem;
+                          color: #141547;
+                          margin-bottom: 10px;
+                      }
+                
+                      h2 {
+                          color: #1c1c1c;
+                          margin-top: 40px;
+                          border-left: 5px solid #0074D9;
+                          padding-left: 10px;
+                          font-size: 25px;
+                      }
+                
+                      ul {
+                          padding-left: 23px;
+                          font-size: 18px;
+                      }
+                
+                
+                      /* Highlight Box Style */
+                      .highlight-box {
+                          background: linear-gradient(135deg, #3b82f6, #60a5fa);
+                          color: white;
+                          padding: 5px;
+                          border-radius: 10px;
+                          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                          margin: 10px 40px;
+                          max-width: 600px;
+                          text-align: center;
+                          font-family: 'Segoe UI', sans-serif;
+                          font-size: 13px;
+                      }
+                
+                      .highlight-box h2 {
+                          font-size: 1.8em;
+                          margin-bottom: 10px;
+                      }
+                
+                      .highlight-box p {
+                          font-size: 1.3em;
+                          line-height: 1.5;
+                      }
+                
+                      h4 {
+                          font-size: 27px;
+                          margin-bottom: 10px;
+                      }
             """;
     }
 
