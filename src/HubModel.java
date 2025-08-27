@@ -142,68 +142,105 @@ public class HubModel {
 
     public String getJavaMainSnippet() {
         return """
-                public class Main {
-                    public static void main(String[] args) {
-                        javax.swing.SwingUtilities.invokeLater(() -> {
-                            HubView view = new HubView();
-                            HubModel model = new HubModel();
-                            new HubController(view, model);
-                            view.setVisible(true);
-                        });
-                    }
+            public class Main {
+                public static void main(String[] args) {
+                    javax.swing.SwingUtilities.invokeLater(() -> {
+                        HubModel model = new HubModel();
+                        HubView view = new HubView();
+                        new HubController(view, model);
+                        view.setVisible(true);
+                    });
                 }
-                """;
+            }
+            """;
     }
 
     public String getJavaControllerSnippet() {
         return """
-                public class HubController {
-                    private HubView view;
-                    private HubModel model;
+            import javax.swing.*;
+            
+            public class HubController {
+                private HubView view;
+                private HubModel model;
 
-                    public HubController(HubView view, HubModel model) {
-                        this.view = view;
-                        this.model = model;
+                public HubController(HubView view, HubModel model) {
+                    this.view = view;
+                    this.model = model;
 
-                        // Exemple : action sur un bouton
-                        view.getHtmlButton().addActionListener(e ->
-                            System.out.println("Bouton HTML cliqué"));
-                    }
+                    // Exemple : bouton HTML
+                    view.getHtmlButton().addActionListener(e ->
+                        JOptionPane.showMessageDialog(view, "Bouton HTML cliqué !"));
+
+                    // Exemple : bouton CSS
+                    view.getCssButton().addActionListener(e ->
+                        JOptionPane.showMessageDialog(view, "Bouton CSS cliqué !"));
+
+                    // Exemple : bouton pour changer le titre
+                    view.getJavaButton().addActionListener(e ->
+                        view.setTitle("Fenêtre Java Swing !"));
                 }
-                """;
+            }
+            """;
     }
 
     public String getJavaViewSnippet() {
         return """
-                import javax.swing.*;
-                import java.awt.*;
+            import javax.swing.*;
+            import java.awt.*;
 
-                public class HubView extends JFrame {
-                    private JButton htmlButton = new JButton("HTML");
+            public class HubView extends JFrame {
+                private JButton htmlButton = new JButton("HTML");
+                private JButton cssButton = new JButton("CSS");
+                private JButton javaButton = new JButton("Java");
 
-                    public HubView() {
-                        setTitle("Hub de modèles");
-                        setSize(400, 200);
-                        setDefaultCloseOperation(EXIT_ON_CLOSE);
-                        setLocationRelativeTo(null);
-                        setLayout(new FlowLayout());
-                        add(htmlButton);
-                    }
+                public HubView() {
+                    setTitle("Hub de modèles");
+                    setSize(600, 400);
+                    setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    setLocationRelativeTo(null);
 
-                    public JButton getHtmlButton() {
-                        return htmlButton;
-                    }
+                    // Layout principal
+                    setLayout(new BorderLayout());
+
+                    // --- Barre de menu ---
+                    JMenuBar menuBar = new JMenuBar();
+                    JMenu fileMenu = new JMenu("Fichier");
+                    JMenuItem exitItem = new JMenuItem("Quitter");
+                    fileMenu.add(exitItem);
+                    menuBar.add(fileMenu);
+                    setJMenuBar(menuBar);
+
+                    // --- Panel central ---
+                    JPanel centerPanel = new JPanel();
+                    centerPanel.setLayout(new FlowLayout());
+                    centerPanel.add(htmlButton);
+                    centerPanel.add(cssButton);
+                    centerPanel.add(javaButton);
+
+                    add(centerPanel, BorderLayout.CENTER);
                 }
-                """;
+
+                public JButton getHtmlButton() { return htmlButton; }
+                public JButton getCssButton() { return cssButton; }
+                public JButton getJavaButton() { return javaButton; }
+            }
+            """;
     }
 
     public String getJavaModelSnippet() {
         return """
-                public class HubModel {
-                    public String getMessage() {
-                        return "Ceci est un exemple de modèle.";
-                    }
+            public class HubModel {
+                private String message = "Ceci est un exemple de modèle Swing.";
+
+                public String getMessage() {
+                    return message;
                 }
-                """;
+
+                public void setMessage(String message) {
+                    this.message = message;
+                }
+            }
+            """;
     }
+
 }
