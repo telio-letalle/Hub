@@ -6,136 +6,164 @@ public class HubModel {
         return """
             <!DOCTYPE html>
             <html lang="fr">
-              <head>
+            <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Mon premier site</title>
+                <title>Mon Site Exemple</title>
                 <link rel="stylesheet" href="style.css">
-              </head>
-              <body>
-                <!-- Menu de navigation -->
-                <nav>
-                  <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">À propos</a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
-                </nav>
-
-                <!-- En-tête -->
+            </head>
+            <body>
+                <!-- Navigation -->
                 <header>
-                  <h1>Bienvenue sur mon site</h1>
-                  <p>Un petit texte d’introduction sympa.</p>
+                    <nav>
+                        <ul>
+                            <li><a href="#accueil">Accueil</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
                 </header>
 
-                <!-- Contenu principal -->
-                <main>
-                  <section>
-                    <h2>Section principale</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </section>
+                <!-- Section Accueil -->
+                <section id="accueil">
+                    <h1>Bienvenue sur mon site</h1>
+                    <p>Ceci est une page de base pour démarrer rapidement un projet.</p>
+                </section>
 
-                  <section>
-                    <h3>Sous-section</h3>
-                    <p>Du contenu supplémentaire avec un <a href="#">lien</a>.</p>
-                  </section>
-                </main>
+                <!-- Section Services -->
+                <section id="services">
+                    <h2>Nos Services</h2>
+                    <h3>Développement</h3>
+                    <p>Création d’applications web et mobiles.</p>
+                    <h3>Design</h3>
+                    <p>UI/UX moderne et accessible.</p>
+                </section>
 
-                <!-- Pied de page -->
+                <!-- Section Contact -->
+                <section id="contact">
+                    <h2>Contact</h2>
+                    <form>
+                        <label for="name">Nom :</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Email :</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </section>
+
+                <!-- Footer -->
                 <footer>
-                  <p>&copy; 2025 - Mon premier site</p>
+                    <p>&copy; 2025 - Mon Site Exemple</p>
                 </footer>
-              </body>
+            </body>
             </html>
             """;
     }
 
     public String getCssSnippet() {
         return """
-            /* Style global */
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: #fafafa;
-                color: #333;
+            /* Reset rapide */
+            * {
                 margin: 0;
                 padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
                 line-height: 1.6;
+                background-color: #f4f4f9;
+                color: #333;
             }
 
-            a {
-                color: #0066cc;
-                text-decoration: none;
-            }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-            /* Menu de navigation */
+            /* Navigation */
             nav {
                 background: #333;
-                padding: 10px 20px;
+                padding: 10px 0;
             }
-
             nav ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
                 display: flex;
-                gap: 20px;
+                justify-content: center;
+                list-style: none;
             }
-
-            nav a {
+            nav ul li {
+                margin: 0 15px;
+            }
+            nav ul li a {
                 color: white;
+                text-decoration: none;
                 font-weight: bold;
             }
-
-            nav a:hover {
-                color: #ffcc00;
+            nav ul li a:hover {
+                color: #ff9800;
             }
 
-            /* En-tête */
-            header {
-                text-align: center;
-                padding: 50px 20px;
-                background: #f4f4f4;
-            }
-
-            header h1 {
+            /* Titres */
+            h1 {
                 font-size: 2.5em;
-                margin-bottom: 10px;
+                margin: 20px 0;
+                text-align: center;
+                color: #222;
             }
-
-            header p {
-                font-size: 1.2em;
-                color: #666;
+            h2 {
+                font-size: 2em;
+                margin: 15px 0;
+                color: #444;
+            }
+            h3, h4 {
+                font-size: 1.5em;
+                margin: 10px 0;
+                color: #555;
             }
 
             /* Sections */
-            main {
-                padding: 20px;
+            section {
+                padding: 40px 20px;
                 max-width: 900px;
                 margin: auto;
             }
 
-            h2 {
-                margin-top: 30px;
-                border-bottom: 2px solid #ddd;
-                padding-bottom: 5px;
+            /* Formulaire */
+            form {
+                display: flex;
+                flex-direction: column;
+                max-width: 400px;
+                margin: auto;
             }
-
-            h3 {
-                margin-top: 20px;
-                color: #444;
+            input, button {
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            button {
+                background: #333;
+                color: white;
+                cursor: pointer;
+            }
+            button:hover {
+                background: #555;
             }
 
             /* Footer */
             footer {
                 text-align: center;
-                padding: 15px;
+                padding: 20px;
                 background: #333;
                 color: white;
                 margin-top: 40px;
+            }
+
+            /* Responsive */
+            @media (max-width: 600px) {
+                nav ul {
+                    flex-direction: column;
+                }
+                h1 {
+                    font-size: 2em;
+                }
             }
             """;
     }
