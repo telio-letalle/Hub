@@ -14,43 +14,48 @@ public class HubController {
         this.view = view;
         this.model = model;
 
-        // Action bouton HTML
+        // HTML Button
         this.view.getHtmlButton().addActionListener(e -> {
-            String htmlSnippet = model.getHtmlSnippet();
-            showSnippet("HTML", htmlSnippet);
+            JTextArea textArea = new JTextArea(model.getHtmlSnippet());
+            textArea.setEditable(false);
+            view.getTabbedPane().setComponentAt(0, new JScrollPane(textArea));
+            view.getTabbedPane().setSelectedIndex(0);
         });
 
-        // Action bouton CSS
+        // CSS Button
         this.view.getCssButton().addActionListener(e -> {
-            String cssSnippet = model.getCssSnippet();
-            showSnippet("CSS", cssSnippet);
+            JTextArea textArea = new JTextArea(model.getCssSnippet());
+            textArea.setEditable(false);
+            view.getTabbedPane().setComponentAt(1, new JScrollPane(textArea));
+            view.getTabbedPane().setSelectedIndex(1);
         });
 
-        // Action bouton Java
+        // Java Button
         this.view.getJavaButton().addActionListener(e -> {
-            JavaSnippetView swingView = new JavaSnippetView();
+            JavaSnippetView javaView = new JavaSnippetView();
 
-            swingView.getMainButton().addActionListener(ev ->
-                    showSnippet("Swing - Main", model.getJavaMainSnippet()));
+            javaView.getMainButton().addActionListener(ev ->
+                    showSnippet("Java - Main", model.getJavaMainSnippet()));
 
-            swingView.getControllerButton().addActionListener(ev ->
-                    showSnippet("Swing - Controller", model.getJavaControllerSnippet()));
+            javaView.getModelButton().addActionListener(ev ->
+                    showSnippet("Java - Model", model.getJavaModelSnippet()));
 
-            swingView.getViewButton().addActionListener(ev ->
-                    showSnippet("Swing - View", model.getJavaViewSnippet()));
+            javaView.getViewButton().addActionListener(ev ->
+                    showSnippet("Java - View", model.getJavaViewSnippet()));
 
-            swingView.getModelButton().addActionListener(ev ->
-                    showSnippet("Swing - Model", model.getJavaModelSnippet()));
+            javaView.getControllerButton().addActionListener(ev ->
+                    showSnippet("Java - Controller", model.getJavaControllerSnippet()));
 
-            swingView.setVisible(true);
+            javaView.setVisible(true);
         });
     }
 
-    // 👉 méthode utilitaire à mettre dans HubController
+    // Méthode utilitaire pour afficher un snippet dans une nouvelle fenêtre
     private void showSnippet(String title, String snippet) {
         JFrame snippetFrame = new JFrame(title);
         JTextArea textArea = new JTextArea(snippet);
         textArea.setEditable(false);
+
         snippetFrame.add(new JScrollPane(textArea));
         snippetFrame.setSize(600, 400);
         snippetFrame.setLocationRelativeTo(null);
