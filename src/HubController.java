@@ -41,7 +41,7 @@ public class HubController {
             JOptionPane.showMessageDialog(view, "Copié dans le presse-papier !");
         });
 
-        // Java Button
+        // Java Button - ouvre une nouvelle fenêtre avec onglets Java
         this.view.getJavaButton().addActionListener(e -> {
             JavaTabbedView javaTabbedView = new JavaTabbedView(
                     model.getJavaMainSnippet(),
@@ -52,8 +52,13 @@ public class HubController {
             javaTabbedView.setVisible(true);
         });
 
-
-
+        // Si vous voulez aussi gérer le bouton copier Java dans l'onglet principal
+        this.view.getJavaCopyButton().addActionListener(e -> {
+            String text = view.getJavaTextArea().getText();
+            Toolkit.getDefaultToolkit().getSystemClipboard()
+                    .setContents(new java.awt.datatransfer.StringSelection(text), null);
+            JOptionPane.showMessageDialog(view, "Copié dans le presse-papier !");
+        });
     }
 
     // Méthode utilitaire pour afficher un snippet dans une nouvelle fenêtre
