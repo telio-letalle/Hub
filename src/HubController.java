@@ -6,6 +6,8 @@ import view.JavaTabbedView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class HubController {
     private HubView view;
@@ -28,6 +30,10 @@ public class HubController {
             JOptionPane.showMessageDialog(view, "Copié dans le presse-papier !");
         });
 
+        this.view.getHtmlExportButton().addActionListener(e -> {
+            exportToFile("HTML", ".html", view.getHtmlTextArea().getText());
+        });
+
         // CSS
         this.view.getCssButton().addActionListener(e -> {
             this.view.getCssTextArea().setText(model.getCssSnippet());
@@ -39,6 +45,10 @@ public class HubController {
             Toolkit.getDefaultToolkit().getSystemClipboard()
                     .setContents(new java.awt.datatransfer.StringSelection(text), null);
             JOptionPane.showMessageDialog(view, "Copié dans le presse-papier !");
+        });
+
+        this.view.getCssExportButton().addActionListener(e -> {
+            exportToFile("CSS", ".css", view.getCssTextArea().getText());
         });
 
         // Java Button - ouvre une nouvelle fenêtre avec onglets Java
@@ -71,5 +81,28 @@ public class HubController {
         snippetFrame.setSize(600, 400);
         snippetFrame.setLocationRelativeTo(null);
         snippetFrame.setVisible(true);
+    }
+
+    // Méthode utilitaire pour exporter vers un fichier
+    private void exportToFile(String type, String extension, String content) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Exporter " + type);
+        fileChooser.setSelectedFile(new java.io.File("snippet" + extension));
+
+        int userSelection = fileChooser.showSaveDialog(view);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            java.io.File fileToSave = fileChooser.getSelectedFile();
+
+            try (FileWriter writer = new FileWriter(fileToSave)) {
+                writer.write(content);
+                JOptionPane.showMessageDialog(view,
+                        "Fichier exporté avec succès : " + fileToSave.getAbsolutePath());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(view,
+                        "Erreur lors de l'export : " + ex.getMessage(),
+                        "Erreur", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 }

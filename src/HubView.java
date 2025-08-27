@@ -20,6 +20,10 @@ public class HubView extends JFrame {
     private JButton cssCopyButton;
     private JButton javaCopyButton;
 
+    // Boutons export
+    private JButton htmlExportButton;
+    private JButton cssExportButton;
+
     public HubView() {
         setTitle("Hub de Snippets");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,17 +46,25 @@ public class HubView extends JFrame {
         htmlTextArea = new JTextArea();
         htmlTextArea.setEditable(true);
         htmlCopyButton = new JButton("Copier");
+        htmlExportButton = new JButton("Exporter");
+        JPanel htmlButtonPanel = new JPanel();
+        htmlButtonPanel.add(htmlCopyButton);
+        htmlButtonPanel.add(htmlExportButton);
         JPanel htmlPanel = new JPanel(new BorderLayout());
         htmlPanel.add(new JScrollPane(htmlTextArea), BorderLayout.CENTER);
-        htmlPanel.add(htmlCopyButton, BorderLayout.SOUTH);
+        htmlPanel.add(htmlButtonPanel, BorderLayout.SOUTH);
 
         // CSS
         cssTextArea = new JTextArea();
         cssTextArea.setEditable(true);
         cssCopyButton = new JButton("Copier");
+        cssExportButton = new JButton("Exporter");
+        JPanel cssButtonPanel = new JPanel();
+        cssButtonPanel.add(cssCopyButton);
+        cssButtonPanel.add(cssExportButton);
         JPanel cssPanel = new JPanel(new BorderLayout());
         cssPanel.add(new JScrollPane(cssTextArea), BorderLayout.CENTER);
-        cssPanel.add(cssCopyButton, BorderLayout.SOUTH);
+        cssPanel.add(cssButtonPanel, BorderLayout.SOUTH);
 
         // Java
         javaTextArea = new JTextArea();
@@ -84,6 +96,9 @@ public class HubView extends JFrame {
     public JButton getHtmlCopyButton() { return htmlCopyButton; }
     public JButton getCssCopyButton() { return cssCopyButton; }
     public JButton getJavaCopyButton() { return javaCopyButton; }
+
+    public JButton getHtmlExportButton() { return htmlExportButton; }
+    public JButton getCssExportButton() { return cssExportButton; }
 
     public JTabbedPane getTabbedPane() { return tabbedPane; }
 }
