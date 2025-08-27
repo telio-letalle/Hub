@@ -86,5 +86,71 @@ public class HubModel {
                     margin-bottom: 15px;
                 }
                 """;
+        }
+    public String getJavaMainSnippet() {
+        return """
+                public class Main {
+                    public static void main(String[] args) {
+                        javax.swing.SwingUtilities.invokeLater(() -> {
+                            HubView view = new HubView();
+                            HubModel model = new HubModel();
+                            new HubController(view, model);
+                            view.setVisible(true);
+                        });
+                    }
+                }
+                """;
+    }
+
+    public String getJavaControllerSnippet() {
+        return """
+                public class HubController {
+                    private HubView view;
+                    private HubModel model;
+
+                    public HubController(HubView view, HubModel model) {
+                        this.view = view;
+                        this.model = model;
+
+                        // Exemple : action sur un bouton
+                        view.getHtmlButton().addActionListener(e ->
+                            System.out.println("Bouton HTML cliqué"));
+                    }
+                }
+                """;
+    }
+
+    public String getJavaViewSnippet() {
+        return """
+                import javax.swing.*;
+                import java.awt.*;
+
+                public class HubView extends JFrame {
+                    private JButton htmlButton = new JButton("HTML");
+
+                    public HubView() {
+                        setTitle("Hub de modèles");
+                        setSize(400, 200);
+                        setDefaultCloseOperation(EXIT_ON_CLOSE);
+                        setLocationRelativeTo(null);
+                        setLayout(new FlowLayout());
+                        add(htmlButton);
+                    }
+
+                    public JButton getHtmlButton() {
+                        return htmlButton;
+                    }
+                }
+                """;
+    }
+
+    public String getJavaModelSnippet() {
+        return """
+                public class HubModel {
+                    public String getMessage() {
+                        return "Ceci est un exemple de modèle.";
+                    }
+                }
+                """;
     }
 }

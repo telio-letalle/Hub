@@ -7,6 +7,7 @@ import java.awt.*;
 public class HubView extends JFrame {
     private JButton htmlButton = new JButton("HTML");
     private JButton cssButton = new JButton("CSS");
+    private JButton javaButton = new JButton("Java");
 
     public HubView() {
         setTitle("Hub de modèles");
@@ -17,6 +18,7 @@ public class HubView extends JFrame {
         setLayout(new FlowLayout());
         add(htmlButton);
         add(cssButton);
+        add(javaButton);
     }
 
     public JButton getHtmlButton() {
@@ -25,5 +27,9 @@ public class HubView extends JFrame {
 
     public JButton getCssButton() {
         return cssButton;
+    }
+
+    public JButton getJavaButton() {
+        return javaButton;
     }
 }
