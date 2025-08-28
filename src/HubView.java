@@ -32,9 +32,9 @@ public class HubView extends JFrame {
 
         // ---- Barre de boutons en haut ----
         JPanel topPanel = new JPanel();
-        htmlButton = new JButton("HTML");
-        cssButton = new JButton("CSS");
-        javaButton = new JButton("Java");
+        htmlButton = new JButton("HTML (base)");
+        cssButton = new JButton("CSS (base)");
+        javaButton = new JButton("Java (MMVC)");
         topPanel.add(htmlButton);
         topPanel.add(cssButton);
         topPanel.add(javaButton);
@@ -74,9 +74,9 @@ public class HubView extends JFrame {
         javaPanel.add(new JScrollPane(javaTextArea), BorderLayout.CENTER);
         javaPanel.add(javaCopyButton, BorderLayout.SOUTH);
 
-        tabbedPane.addTab("HTML", htmlPanel);
-        tabbedPane.addTab("CSS", cssPanel);
-        tabbedPane.addTab("Java", javaPanel);
+        tabbedPane.addTab("HTML (base)", htmlPanel);
+        tabbedPane.addTab("CSS (base)", cssPanel);
+        tabbedPane.addTab("Java (MMVC)", javaPanel);
 
         // ---- Layout ----
         setLayout(new BorderLayout());
